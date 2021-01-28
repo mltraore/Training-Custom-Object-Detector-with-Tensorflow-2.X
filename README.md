@@ -134,9 +134,10 @@ git clone https://github.com/tensorflow/models.git
 ```
 Sonra aynı dizinde bu scripti çalıştırarak 2. repoyu da indirip çıkartalım.
 ```bash
->>> wget -O training_files.zip https://github.com/mohamedlassine97/Training-Custom-Object-Detector-with-Tensorflow-2.X/archive/main.zip
->>> unzip -j "training_files.zip" "Training-Custom-Object-Detector-with-Tensorflow-2.-main/workspace" -d .
->>> rm -r training_files.zip
+ wget -O training_files.zip https://github.com/mohamedlassine97/Training-Custom-Object-Detector-with-Tensorflow-2.X/archive/master.zip
+ unzip training_files.zip 
+ cp -r Training-Custom-Object-Detector-with-Tensorflow-2.X-master/workspace/ .
+ rm -r *master *.zip
 ```
 Ardından dizin yapımız böyle gözükmelidir.
 ```TensorFlow/
