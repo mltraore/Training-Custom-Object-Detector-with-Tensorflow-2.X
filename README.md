@@ -64,7 +64,7 @@ Anaconda prompt'ta şu adımları izliyoruz:
 
 **Sanal ortamı oluşturma**  
  ```
-  conda create -name tensorflow pip python=3.8.5
+  conda create --name tensorflow pip python=3.8.5
  ```  
 **Sanal ortamı aktifleştirme**
 ```
