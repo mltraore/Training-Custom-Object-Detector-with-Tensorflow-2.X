@@ -6,9 +6,18 @@ Bu repoda, Tensorflow-gpu 2.X ile kendi özel Tensorflow Nesne Detektörümüzü
 
 Tensorflow Nesne Detektörü API'si ile özel bir nesne tanıma modeli eğitmek için bu dımları izlemeniz gerekir :point_right:  
 
-1. Anaconda kurulumu ve Sanal Ortamı oluşturma  
+1. Anaconda Kurulumu ve Sanal Ortamı Oluşturma  
 2. TensorFlow GPU Kurulumu  
-3. Çalışma ortamı hazırlama  
+3. Çalışma Ortamı Hazırlama  
+4. COCO API Kurulumu
+5. Nesne Tanıma API'si Kurulumu
+6. İnternet'ten Verileri (görüntü) Toplama
+7. Eğitim için  Verilerimizi Etiketleme
+8. Modeli yapılandırma
+9. Modeli eğitme
+10. Tensorboad ile eğitim sürecini izleme
+11. Eğitilmiş Modelimizin Çıkarım Grafiğini Dışa Aktarma
+12. Modeli Değerlendirme
 
 Bu repoda, sadece tek bir sınıf (trafik arabaları tanıma) için model eğiteceğiz.  
 Ama bu adımları takip ederek birden fazla sınıf için de model eğitilebilecektir.  
@@ -72,8 +81,6 @@ Bir önceki adımda Anaconda'yı kurduk ve sanal ortamı oluşturup aktifleştir
 &nbsp;&nbsp;&nbsp;&nbsp;Daha önce bahsettiğimiz gibi tensorflow-gpu, CUDA Toolkiti ve  NVIDIA cuDNN kütüphanesini gerektirmektedir.  
 &nbsp;&nbsp;&nbsp;&nbsp;Bunlar GPU grafik belleği kullanmak için gerekli araç ve kütüphanelerdir. Ama bu anlatımda bunların nasıl  
 &nbsp;&nbsp;&nbsp;&nbsp;kurulacağına girmeyeceğiz. Kurumlar ile ilgili bu [sayfa](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html) yardımcı olacaktır:wink:.  
-
-**TODO** Tensorflow Cuda cudnn FOTO from book keras??  
 <br/>
 Anaconda prompt'ta:  
 ```
@@ -197,7 +204,7 @@ Her şey yolundaysa böyle gözükmelidir :v::v::v:
 <br/>
 
 
-### 5. Object Detection API installation :alien:
+### 5. Nesne Tanıma API'si Kurulumu :alien:
 Bu adım kurulumların son adımıdır. Şimdi Nesne Tanıma API'sinin kendisini kuralım.  
 TensorFlow/models/reasearch dizinine gidelim.  
 ```
@@ -257,7 +264,7 @@ Ran 20 tests in 28.457s
 </p>
 <br/>
 
-### 6. İnternet'ten verileri (görüntü) toplama
+### 6. İnternet'ten Verileri (görüntü) Toplama
 
 TensorFlow API'si test ettikten sonra modelimizi eğitmek üzere internet üzerinden sınıfımızın görüntülerini topluyoruz.  
 İnternette sınıfımıza uygun görüntü veri setleri de bulabiliriz.  
@@ -309,7 +316,7 @@ Bu veri sayısı tamamen size bağlıdır, ama aklımda veri sayısının modeli
 Görüntüleri topladıktan sonra verilerimizin %80'i train veri seti %20'si ise test veri seti olarak ayırıyoruz.  
 Train görüntüleri images/train test görüntüleri ise images/test dizinlere yerleştiriyoruz.  
 
-### 7. Eğitim için verilerimizi Etiketleme 
+### 7. Eğitim için Verilerimizi Etiketleme 
 Bir önceki adımda veri toplama ve ilgili dosyalara ayırmadan bahsettik. Bu adımda Train ve Test olarak ayırdığımız  
 görüntüleri nasıl etiketleyebileceğimiz :question: ve veri dosyalarını istediğimiz :question: formatlardan nasıl elde edebiliriz ? sorularına cevap vereceğiz:blush:.  
 Bu anlatımda etiketleme işlemi için web-tabanlı bilgisayarla görü açıklama aracı olan [CVAT](https://software.intel.com/content/www/us/en/develop/articles/computer-vision-annotation-tool-a-universal-approach-to-data-annotation.html)'ı kullanacağız.  
@@ -344,7 +351,7 @@ item {
 }
 ```
 
-### 8. Eğitim Hattı yapılandırma  
+### 8. Modeli Yapılandırma  
 #### 8.1 Önceden eğitilmiş modeli indirme 
 Bu eğitim için TensorFlow'nun önceden eğitilmiş modellerinden birinin CONFIG dosyasını kulllanacağız.  [TensorFLow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)'da TensorFlow'nun önceden eğitilmiş bir sürü modelleri vardır, ama biz bu eğitimde, iyi performansla yelpazenin daha hızlı ucunda olduğu için  
 [SSD MobileNet V2 FPNLite 640x640](https://www.google.com/searchq=SSD+MobileNet+V2+FPNLite+640x640&oq=SSD+MobileNet+V2+FPNLite+640x640&aqs=chrome.0.69i59l2&sourceid=chrome&ie=UTF-8) modelini kullanacağız. Bu modelleri inceleyerek istediğiniz modeli seçebilirsiniz ama adımlarını biraz değiştirmeniz gerekecektir.  
@@ -465,7 +472,6 @@ Yukarıda **pipeline.config** dosyasını açmıştık, şimdi içini inceleyeli
  
  <p align=Center>
     <img src="https://media.giphy.com/media/gZWgmHTq7eGhW/giphy.gif" alt="this slowpoke moves"  width=1000  height=350/>
-	<br>
 </p>  
 Bu bölümde aklımıza takılabilen bu tür sorulara ışık tutmaya çalışacağız.  
 Text editöründe **pipeline.config** dosyamımızı tekrandan açalım.   
@@ -509,14 +515,14 @@ Bu fonksionun parametrelerini aynı `losses.proto` dosya içerisinde görebilirs
  
 Örnek olarak kayıp fonksiyonu parametresine baktık. Aynı yaklaşımı kullanarak diğer parametreleri de değiştirebiliriz.  
 
-![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+)![#C0C0C0](https://via.placeholder.com/15/C0C0C0/000000?text=+)![#A0A0A0](https://via.placeholder.com/15/A0A0A0/000000?text=+)![#808080](https://via.placeholder.com/15/808080/000000?text=+)![#505050](https://via.placeholder.com/15/505050/000000?text=+)![#000000](https://via.placeholder.com/15/000000/000000?text=+) &nbsp;&nbsp; **Artık, modelinizi tam istediğinizi yapacak şekilde özelleştirecek bilgiye sahipsiniz**
+![#FFFFFF](https://via.placeholder.com/15/FFFFFF/000000?text=+)![#C0C0C0](https://via.placeholder.com/15/C0C0C0/000000?text=+)![#A0A0A0](https://via.placeholder.com/15/A0A0A0/000000?text=+)![#808080](https://via.placeholder.com/15/808080/000000?text=+)![#505050](https://via.placeholder.com/15/505050/000000?text=+)![#000000](https://via.placeholder.com/15/000000/000000?text=+) &nbsp;&nbsp; **Artık, modelimizi tam istediğimizi yapacak şekilde özelleştirebiliyoruz** :exclamation:
 
  <p align=Center>
     <img src="https://media.giphy.com/media/K9r7YfHLFyrfi/giphy.gif" alt="this slowpoke moves"  width=980  height=350/>
 </p>
 <br/>	
 
-### 9. Modelimizi eğitme
+### 9. Modeli eğitme
 Şimdi ```training_demo``` dizinine gidip ve ```tensorflow``` olarak oluşturduğumuz sanal ortamı aktifleştiriyoruz. Ardından ```model_main_tf2.py``` python betiğini uygun parametrelerle çalıştıralım.  
 ```
 python3 model_main_tf2.py \
@@ -534,7 +540,7 @@ Burada gittikçe ```loss``` değerimizin azaldığını fark edebiliriz. Ama bat
 ama merak edecek bir şey yoktur. Step sayısı fazla ise zamanla düzenlenecektir. Bu eğitimde ```Step size``` yani adım sayısı 4000 olarak ayarladık.  
 Eğer bu betiği çalıştırırken herhangi bir Out Of Memory(OOM) yani bellek dışına yazma hatasını alırsanız bunu eğitim hattı dosyamızdaki batch_size değeri azaltarak çözebilirsiniz. Model eğitilirken program kesmeyi isteyebiliriz, bunun için CTRL + C kullanabiliriz.  
 
-### 10. Tensorboad ile eğitim sürecini izleme
+### 10. Tensorboad ile Eğitim Sürecini İzleme
 Bir önceki adımda örneğini verdiğimiz gibi model eğitilirken böyle bir çıktı almamız gerekir:  
 ```
 I0124 15:50:15.607145 140032611187584 model_lib_v2.py:648] Step 400 per-step time 0.465s loss=0.259
@@ -582,7 +588,7 @@ görsel olarak takip edebileceğimiz için model tatmin edici bir seviyeye ulaş
 
 Eğitim sürecinde model tatmin edici bir saviyeye ulaştığında CTRL + C ile kesebiliriz ya da tamamlanmasını bekleyebiliriz.  
 
-### 11. Eğitilmiş modelimizin Çıkarım grafiğini dışa aktarma
+### 11. Eğitilmiş Modelimizin Çıkarım Grafiğini Dışa Aktarma
 Model eğitimi bitirdikten sonra, modelimizi çıkartabiliriz. Bunun için **trainikng_demo** dizininde olalım. Şimdi bu dizinde bulunan çıkartma betiğini çalıştıralım. 
 ```
 python3 exporter_main_v2.py 
