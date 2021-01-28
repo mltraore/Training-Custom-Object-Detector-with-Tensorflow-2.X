@@ -398,7 +398,7 @@ pipeline.config dosyasının içeriği
 Model yapılandırma süreci 2 bölüme ayırdık. İlk olarak, temellere bakacağız.  
 Eğitimi başlatmak ve bir temel sonuç elde etmek için yapılandırılması gereken minimum gerekli parametre setine değineceğiz.  
 Bu yaklaşımla eğitmi kolay bir şekilde başlatabiliriz ve sonunda uygulanabilir bir modeli elde ederiz. Ama modelin performansının yüksek olmasını bekleyemeyiz.  
-İkinci bölümde, geniş bir yelpezedeki mevcut model parametrelerini ayarlamaya odaklanacağız. Bu süreçte **probobuff** dosyalarını inceleme fırsatımız olacaktır.  
+İkinci bölümde, geniş bir yelpezedeki mevcut model parametrelerini ayarlamaya odaklanacağız. Bu süreçte **proto** dosyalarını inceleme fırsatımız olacaktır.  
 Artık modelimizin parametrelerinin çoğunun kullanımına değeceğimiz için en iyi model performansını elde etmek için parametrelerle oynayabileceğiz.   
 <br />
 Yukarıda **pipeline.config** dosyasını açmıştık, şimdi içini inceleyelim ve gerekli değişiklikleri yapalım.  
@@ -465,8 +465,8 @@ Yukarıda **pipeline.config** dosyasını açmıştık, şimdi içini inceleyeli
  
  <p align=Center>
     <img src="https://media.giphy.com/media/gZWgmHTq7eGhW/giphy.gif" alt="this slowpoke moves"  width=1000  height=350/>
-</p>
-<br/>
+	<br>
+</p>  
 Bu bölümde aklımıza takılabilen bu tür sorulara ışık tutmaya çalışacağız.  
 Text editöründe **pipeline.config** dosyamımızı tekrandan açalım.   
 
@@ -481,9 +481,9 @@ Text editöründe **pipeline.config** dosyamımızı tekrandan açalım.
 
 Şimdi mevcut diğer seçeneklere bakmaya çalışalım ve onlardan bir tanesini kullanalım.  
 İyi hatırlıyorsak ilk adımlarda [TensorFlow API resimi github](https://github.com/tensorflow/models) hesabından models reposunu **TensorFlow** dizinine klonlamıştık.  
-Şimdi bu dizinin alt dizin yollarını takip ederek ```losses.proto``` dosyamızı bulup açalım ve classification fonksiyonu bölümüne gidelim.  
+Şimdi bu dizinin alt dizin yollarını takip ederek ```losses.proto``` dosyamızı bulup açalım ve classification fonksiyonu bölümüne gidelim.
 ```diff
-   + TensorFlow/models/research/object_detection/protos/losses.proto
++ TensorFlow/models/research/object_detection/protos/losses.proto
 ```
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) &nbsp;&nbsp;***losses.proto --> classification_loss function***
 <p align=center>  
@@ -516,7 +516,7 @@ Bu fonksionun parametrelerini aynı `losses.proto` dosya içerisinde görebilirs
 </p>
 <br/>	
 
-### Modelimizi eğitme
+### 9. Modelimizi eğitme
 Şimdi ```training_demo``` dizinine gidip ve ```tensorflow``` olarak oluşturduğumuz sanal ortamı aktifleştiriyoruz. Ardından ```model_main_tf2.py``` python betiğini uygun parametrelerle çalıştıralım.  
 ```
 python3 model_main_tf2.py \
@@ -534,7 +534,7 @@ Burada gittikçe ```loss``` değerimizin azaldığını fark edebiliriz. Ama bat
 ama merak edecek bir şey yoktur. Step sayısı fazla ise zamanla düzenlenecektir. Bu eğitimde ```Step size``` yani adım sayısı 4000 olarak ayarladık.  
 Eğer bu betiği çalıştırırken herhangi bir Out Of Memory(OOM) yani bellek dışına yazma hatasını alırsanız bunu eğitim hattı dosyamızdaki batch_size değeri azaltarak çözebilirsiniz. Model eğitilirken program kesmeyi isteyebiliriz, bunun için CTRL + C kullanabiliriz.  
 
-### Tensorboad ile eğitim sürecini izleme
+### 10. Tensorboad ile eğitim sürecini izleme
 Bir önceki adımda örneğini verdiğimiz gibi model eğitilirken böyle bir çıktı almamız gerekir:  
 ```
 I0124 15:50:15.607145 140032611187584 model_lib_v2.py:648] Step 400 per-step time 0.465s loss=0.259
@@ -582,7 +582,7 @@ görsel olarak takip edebileceğimiz için model tatmin edici bir seviyeye ulaş
 
 Eğitim sürecinde model tatmin edici bir saviyeye ulaştığında CTRL + C ile kesebiliriz ya da tamamlanmasını bekleyebiliriz.  
 
-### Eğitilmiş modelimizin Çıkarım grafiğini dışa aktarma
+### 11. Eğitilmiş modelimizin Çıkarım grafiğini dışa aktarma
 Model eğitimi bitirdikten sonra, modelimizi çıkartabiliriz. Bunun için **trainikng_demo** dizininde olalım. Şimdi bu dizinde bulunan çıkartma betiğini çalıştıralım. 
 ```
 python3 exporter_main_v2.py 
@@ -605,7 +605,7 @@ Ya da *`TypeError:Expected Operation, Variable, or Tensor, got block4 in exporte
 Şimdi eğer her şey başarılı bir şekilde sonlandıysa modelimiz **training_demo/exported-models/my_mobilenet_model/saved_model** dizini altında olacaktır. Burada söz konusu olan *çıkartma grafiği (Inference graph)* bu dizinde *`saved_model.pb`* olarak bulunacaktır.  
 Bu graf dosyasının yanında label_map.pbtxt dosyasını da kopyalayabiliriz.  
 
-### Modeli Değerlendirme
+### 12. Modeli Değerlendirme
 IoU, mAP, Recall ve Precision gibi model metriklerini ölçmek istiyorsak, bu adımı tamamlayabiliriz. Modeli değerlendirmek için en güncel TensorFlow Dokümantasyonu [burada](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_training_and_evaluation.md#evaluation) bulabiliriz.  
 Şimdi ```TensorFlow/workspace/training_demo``` dizininde terminali açıp bu komutu çalıştıralım.
 
