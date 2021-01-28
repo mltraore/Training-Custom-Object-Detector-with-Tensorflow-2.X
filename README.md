@@ -484,7 +484,7 @@ Text editöründe **pipeline.config** dosyamımızı tekrandan açalım.
 Şimdi bu dizinin alt dizin yollarını takip ederek ```losses.proto``` dosyamızı bulup açalım ve classification fonksiyonu bölümüne gidelim.  
 ```diff
    + TensorFlow/models/research/object_detection/protos/losses.proto
- ```
+```
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) &nbsp;&nbsp;***losses.proto --> classification_loss function***
 <p align=center>  
 <img src="outlines/closs.png" alt="Classification Loss"  width=1050/>
@@ -521,7 +521,7 @@ Bu fonksionun parametrelerini aynı `losses.proto` dosya içerisinde görebilirs
 ```
 python3 model_main_tf2.py \
        --model_dir=models/my_ssd_mobilenet_v2_fpnlite \
-       --pipeline_config_path=models/my_ssd_mobilenet_v2_fpnlite\pipeline.config
+       --pipeline_config_path=models/my_ssd_mobilenet_v2_fpnlite/pipeline.config
 ```
 Betiği çalıştırırken bazı uyarıları alabiliriz ama bunlar hata değildir göz ardı edebiliriz.  
 Herşey yolunda ise model eğitimi başladığında böyle bir çıktı almalıyız :clap:.
@@ -611,10 +611,10 @@ IoU, mAP, Recall ve Precision gibi model metriklerini ölçmek istiyorsak, bu ad
 
 ```
 python3 model_main_tf2.py   \
---pipeline_config_path  models/my_ssd_mobilenet_v2_fpnlite/pipeline.config   \
---model_dir  models/my_ssd_mobilenet_v2_fpnlite       \
---checkpoint_dir  models/my_ssd_mobilenet_v2_fpnlite  \
---alsologtostderr
+         --pipeline_config_path  models/my_ssd_mobilenet_v2_fpnlite/pipeline.config   \
+         --model_dir  models/my_ssd_mobilenet_v2_fpnlite       \
+         --checkpoint_dir  models/my_ssd_mobilenet_v2_fpnlite  \
+         --alsologtostderr
 ```
 Ve her şey yolunda ise böyle bir çıktı almalıyız.  
 ```
