@@ -394,7 +394,7 @@ training_demo/
 ```
 
 #### 8.5 pipeline.config dosyasının yapılandırılması 
-**pipeline.config** dosyamızı yapılandırmak için, bir test editöründe **models\my_ssd_mobilenet_v2_fpnlite\pipeline.config** dosyasını açalım.  
+**pipeline.config** dosyamızı yapılandırmak için, bir test editöründe **models/my_ssd_mobilenet_v2_fpnlite/pipeline.config** dosyasını açalım.  
 
 <p align=center>  
 pipeline.config dosyasının içeriği
