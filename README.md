@@ -219,7 +219,7 @@ python -m pip install .
 Herhangi bir hata alırsanız :-1:, hatayı bildirebilirsiniz :+1: , büyük ihtimal ile hata pycotools aracının yüklenmesiyle ilgilidir.  
 Ama eğer herhangi bir hatayla karşılaşmadıysanız :wave: modelinizi altaki :point_down: komutla test edebilirsiniz.  
 ```
-python object_detection/builders/model_builder_tf2_test.py
+python3 object_detection/builders/model_builder_tf2_test.py
 ```
 ```
 INFO:tensorflow:time(__main__.ModelBuilderTF2Test.test_create_ssd_models_from_config): 23.55s
