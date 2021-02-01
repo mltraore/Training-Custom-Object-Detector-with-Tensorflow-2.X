@@ -4,7 +4,7 @@
 
 Bu repoda, Tensorflow-gpu 2.X ile kendi özel Tensorflow Nesne Detektörümüzü nasıl eğitebiliriz :question: sorusuna cevap verilecektir:blush:.  
 
-Tensorflow Nesne Detektörü API'si ile özel bir nesne tanıma modeli eğitmek için bu dımları izlemeniz gerekir :point_right:  
+Tensorflow Nesne Detektörü API'si ile özel bir nesne tanıma modeli eğitmek için izlememiz gereken adımları şunlardır :point_right:  
 
 1. Anaconda Kurulumu ve Sanal Ortamı Oluşturma  
 2. TensorFlow GPU Kurulumu  
@@ -588,6 +588,10 @@ Eğitim betiği, kontrol noktaları her birkaç dakikada bir kaydetmektedir. Eğ
 görsel olarak takip edebileceğimiz için model tatmin edici bir seviyeye ulaştığında CTRL + C ile eğitimi durdurabiliriz. Ya da eğitimi tamamlana kadar bekleriz.
 
 Eğitim sürecinde model tatmin edici bir saviyeye ulaştığında CTRL + C ile kesebiliriz ya da tamamlanmasını bekleyebiliriz.  
+
+***Bonus:***  [Uzaktan serverden Tensorboard çalıştırma](https://stackoverflow.com/questions/37987839/how-can-i-run-tensorboard-on-a-remote-server)  
+
+
 
 ### 11. Eğitilmiş Modelimizin Çıkarım Grafiğini Dışa Aktarma
 Model eğitimi bitirdikten sonra, modelimizi çıkartabiliriz. Bunun için **trainikng_demo** dizininde olalım. Şimdi bu dizinde bulunan çıkartma betiğini çalıştıralım. 
