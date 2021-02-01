@@ -4,7 +4,7 @@
 
 Bu repoda, Tensorflow-gpu 2.X ile kendi özel Tensorflow Nesne Detektörümüzü nasıl eğitebiliriz :question: sorusuna cevap verilecektir:blush:.  
 
-Tensorflow Nesne Detektörü API'si ile özel bir nesne tanıma modeli eğitmek için izlememiz gereken adımları şunlardır :point_right:  
+Tensorflow Nesne Detektörü API'si ile özel bir nesne tanıma modeli eğitmek için izlememiz gereken adımlar şunlardır :point_right:  
 
 1. Anaconda Kurulumu ve Sanal Ortamı Oluşturma  
 2. TensorFlow GPU Kurulumu  
@@ -13,9 +13,9 @@ Tensorflow Nesne Detektörü API'si ile özel bir nesne tanıma modeli eğitmek 
 5. Nesne Tanıma API'si Kurulumu
 6. İnternet'ten Verileri (görüntü) Toplama
 7. Eğitim için  Verilerimizi Etiketleme
-8. Modeli yapılandırma
-9. Modeli eğitme
-10. Tensorboad ile eğitim sürecini izleme
+8. Modeli Yapılandırma
+9. Modeli Eğitme
+10. Tensorboad ile Eğitim Sürecini İzleme
 11. Eğitilmiş Modelimizin Çıkarım Grafiğini Dışa Aktarma
 12. Modeli Değerlendirme
 
@@ -169,7 +169,7 @@ Sonradan terminali kapatıp yeniden açıyoruz ve TensorFlow dizine gidip sanal 
 cd ~/Desktop/Tensorflow
 conda activate tensorflow
 ```
-### 4. COCO API Kurulumu
+### 4. COCO API'si Kurulumu :alien:
 TensorFlow 2.X için Nesne Tanıma API'sinin başka bir gereksinimi ise pycocotools araçlarıdır.  
 ```
 pip install cython
@@ -317,7 +317,7 @@ Bu veri sayısı tamamen size bağlıdır, ama aklımda veri sayısının modeli
 Görüntüleri topladıktan sonra verilerimizin %80'i train veri seti %20'si ise test veri seti olarak ayırıyoruz.  
 Train görüntüleri images/train test görüntüleri ise images/test dizinlere yerleştiriyoruz.  
 
-### 7. Eğitim için Verilerimizi Etiketleme 
+### 7. Eğitim için Verileri Etiketleme 
 Bir önceki adımda veri toplama ve ilgili dosyalara ayırmadan bahsettik. Bu adımda Train ve Test olarak ayırdığımız  
 görüntüleri nasıl etiketleyebileceğimiz :question: ve veri dosyalarını istediğimiz :question: formatlardan nasıl elde edebiliriz ? sorularına cevap vereceğiz:blush:.  
 Bu anlatımda etiketleme işlemi için web-tabanlı bilgisayarla görü açıklama aracı olan [CVAT](https://software.intel.com/content/www/us/en/develop/articles/computer-vision-annotation-tool-a-universal-approach-to-data-annotation.html)'ı kullanacağız.  
@@ -523,7 +523,7 @@ Bu fonksionun parametrelerini aynı `losses.proto` dosya içerisinde görebilirs
 </p>
 <br/>	
 
-### 9. Modeli eğitme
+### 9. Modeli Eğitme
 Şimdi ```training_demo``` dizinine gidip ve ```tensorflow``` olarak oluşturduğumuz sanal ortamı aktifleştiriyoruz. Ardından ```model_main_tf2.py``` python betiğini uygun parametrelerle çalıştıralım.  
 ```
 python3 model_main_tf2.py \
