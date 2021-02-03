@@ -37,18 +37,7 @@ Eğitim için benim kullandığım sistemin özellikleri şunlardır:
   **Komut** ```nvidia-smi -q | grep 'Product Name'```
   **Komut** ```sudo dmidecode | grep DDR```
 - Belek Cihazı 32GB  
-  **Komut** ```sudo dmidecode -t 17 | grep Size:```  
-
-
-
-- OS Linux / Ubuntu 20.04  
-- Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz  
-  **Komut** ```lscpu | grep Model\ name```  
-- NVIDIA GeForce GTX 1050 Ti 4GB DDR4 Grafik Bellek Kartı  
-  **Komut** ```sudo dmidecode | grep DDR```  
-- Belek Cihazı 16GB  
-  **Komut** ```sudo dmidecode -t 17 ```  
-
+  **Komut** ```sudo dmidecode -t 17 | grep Size:```
 <br />
 
 Tensorflow API'si ile model eğitmenin iki (2) tane yolu vardır.  
@@ -694,3 +683,11 @@ I0124 18:07:27.623046 139935346711424 model_lib_v2.py:957] 	+ Loss/total_loss: 0
 INFO:tensorflow:Waiting for new checkpoint at models/my_ssd_mobilenet_v2_fpnlite
 I0124 18:12:08.746780 139935346711424 checkpoint_utils.py:125] Waiting for new checkpoint at models/my_ssd_mobilenet_v2_fpnlite
 ```
+### Video Üzerinde Modeli Deneme
+```
+python3 tf-video.py --video test.mp4  --threshold 0.85
+```
+
+
+
+
