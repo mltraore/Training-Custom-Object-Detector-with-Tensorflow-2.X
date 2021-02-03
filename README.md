@@ -29,15 +29,15 @@ istemeyen  herkes paylaşılan verileri kullanabilecektir :ok_hand:.  
 Eğitim için kullandığımız sistemin özellikleri, eğitim sürecimizi çok etkilemektedir.
 Örnek olarak eğitim süresi, eğitim performansı, vs. söyleyebiliriz.  
 Eğitim için benim kullandığım sistemin özellikleri şunlardır:  
-- OS Linux / Ubuntu 18.04.4 LTS (Bionic Beaver)
+- OS Linux / Ubuntu 18.04.4 LTS (Bionic Beaver)  
   **Komut** ```cat /etc/os-release```  
-- Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz
+- Intel(R) Xeon(R) Gold 6130 CPU @ 2.10GHz  
   **Komut** ```lscpu | grep Model\ name```  
-- Tesla V100-PCIE-32GB DDR4  Grafik Bellek Kartı
-  **Komut** ```nvidia-smi -q | grep 'Product Name'```
-  **Komut** ```sudo dmidecode | grep DDR```
+- Tesla V100-PCIE-32GB DDR4  Grafik Bellek Kartı  
+  **Komut** ```nvidia-smi -q | grep 'Product Name'```  
+  **Komut** ```sudo dmidecode | grep DDR```  
 - Belek Cihazı 32GB  
-  **Komut** ```sudo dmidecode -t 17 | grep Size:```
+  **Komut** ```sudo dmidecode -t 17 | grep Size:```  
 <br />
 
 Tensorflow API'si ile model eğitmenin iki (2) tane yolu vardır.  
