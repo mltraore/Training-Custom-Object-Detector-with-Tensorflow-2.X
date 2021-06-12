@@ -23,7 +23,7 @@ Bu repoda, sadece tek bir sınıf (trafik arabaları tanıma) için model eğite
 Ama bu adımları takip ederek birden fazla sınıf için de model eğitilebilecektir.  
 Araba tanımı ile ilgili kullanılan veri seti, repoda tüm gerekli formatlarda paylaşılacaktır.  
 Pratik yapma amacıyla bu repoyu kullanıyor olup, veri toplama ve/veya hazırlama ile uğraşmak  
-istemeyen  herkes paylaşılan verileri kullanabilecektir :ok_hand:.  
+istemeyen  herkes paylaşılan verileri kullanabilecektir :ok_hand:..  
 
 ## Sistem Gereksinimleri
 Eğitim için kullandığımız sistemin özellikleri, eğitim sürecimizi çok etkilemektedir.
